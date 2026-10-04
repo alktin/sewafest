@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SewaFest — Rayakan Lebih Bijak, Sewa Lebih Mudah</title>
+  <meta name="description" content="Marketplace penyewaan perlengkapan acara untuk warga Bekasi. Satu platform untuk sewa tenda, sound system, dekorasi, dan lainnya." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- ===== Top navigation bar (persistent, web-first) ===== -->
+  <header class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <a class="brand" data-go="home">
+        <span class="brand__mark">SF</span>
+        <span class="brand__name">SewaFest</span>
+      </a>
+
+      <nav class="nav-links" id="navLinks"></nav>
+
+      <div class="nav-search" id="navSearch">
+        <span class="nav-search__ic">🔍</span>
+        <input id="globalSearch" placeholder="Cari tenda, sound, dekorasi…" />
+      </div>
+
+      <div class="nav-actions" id="navActions"></div>
+
+      <button class="nav-burger" id="navBurger" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <!-- ===== Main content ===== -->
+  <main id="screen" class="main"></main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer" id="footer">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <div class="brand"><span class="brand__mark">SF</span><span class="brand__name">SewaFest</span></div>
+        <p class="footer__tag">"Rayakan Lebih Bijak, Sewa Lebih Mudah"</p>
+        <p class="footer__desc">Marketplace penyewaan perlengkapan acara yang menghubungkan penyewa dengan vendor UMKM lokal di Bekasi.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Jelajahi</h4>
+        <a data-go="home">Beranda</a>
+        <a data-go="search">Marketplace</a>
+        <a data-go="orders">Pesanan</a>
+        <a data-go="chats">Pesan</a>
+      </div>
+      <div class="footer__col">
+        <h4>Vendor</h4>
+        <a data-go="v-home">Dashboard</a>
+        <a data-go="v-insights">Insight &amp; Pendapatan</a>
+        <a data-go="v-inventory">Gudang</a>
+        <a data-go="v-calendar">Kalender</a>
+      </div>
+      <div class="footer__col">
+        <h4>SewaFest</h4>
+        <a data-go="home">Tentang Kami</a>
+        <a data-go="home">Bantuan &amp; FAQ</a>
+        <a data-go="home">Syarat &amp; Ketentuan</a>
+        <a data-go="home">Kontak</a>
+      </div>
+    </div>
+    <div class="footer__bar">
+      <span>© 2026 SewaFest · Kelompok 4 — Creativity &amp; Innovation</span>
+      <span class="footer__sdg">Berkontribusi pada SDG 8 · 11 · 12</span>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script src="pages-customer.js"></script>
+  <script src="pages-booking.js"></script>
+  <script src="pages-orders.js"></script>
+  <script src="pages-vendor.js"></script>
+</body>
+</html>

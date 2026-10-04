@@ -1,0 +1,10 @@
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.log
+
+# temp verification files (none should be committed)
+verify.js
+out.txt
+env.txt
+checkresult.txt
