@@ -346,8 +346,8 @@ body.auth-mode .navbar, body.auth-mode .footer { display: none; }
 .cal__nav { display: flex; gap: 8px; }
 .cal__nav .navbtn { width: 36px; height: 36px; border-radius: 10px; border: 1px solid var(--line); background: #fff; cursor: pointer; font-size: 16px; color: var(--plum-800); }
 .cal__nav .navbtn:hover { border-color: var(--magenta-500); color: var(--magenta); }
-.cal__grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); grid-auto-rows: 72px; gap: 6px; }
-.cal__dow { text-align: center; font-size: 12px; font-weight: 700; color: var(--ink-soft); padding-bottom: 6px; min-width: 0; }
+.cal__grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); grid-template-rows: auto; grid-auto-rows: 72px; gap: 6px; }
+.cal__dow { text-align: center; font-size: 12px; font-weight: 700; color: var(--ink-soft); padding-bottom: 6px; min-width: 0; align-self: end; }
 .cal__cell {
   min-width: 0; height: 100%; border-radius: 10px; display: grid; place-items: center;
   font-size: 14px; font-weight: 600; cursor: pointer; background: var(--bg); color: var(--ink);
