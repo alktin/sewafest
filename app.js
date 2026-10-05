@@ -94,8 +94,17 @@ function renderNavbar(active, isAuth) {
 
   // group a route to its nav key for active-state
   const activeKey = navActiveKey(active);
-  $navLinks.innerHTML = links.map(([r, label]) =>
+  const linkHtml = links.map(([r, label]) =>
     `<a class="nav-link ${activeKey === r ? "is-active" : ""}" data-go="${r}">${label}</a>`).join("");
+  // mobile menu also carries the mode switch (hidden from the top bar on small screens)
+  const mobModeSeg = `
+    <div class="nav-mob-divider"></div>
+    <div class="mode-seg" id="modeSegMob">
+      <button data-mode="customer" class="${State.app === "customer" ? "is-active" : ""}">Penyewa</button>
+      <button data-mode="vendor" class="${State.app === "vendor" ? "is-active" : ""}">Vendor</button>
+    </div>`;
+  $navLinks.innerHTML = linkHtml + mobModeSeg;
+  $navLinks.classList.remove("open"); // collapse menu on each navigation
 
   // search only shows in customer mode
   $navSearch.style.display = State.app === "vendor" ? "none" : "";
@@ -119,13 +128,21 @@ function renderNavbar(active, isAuth) {
       <div class="nav-avatar" data-go="profile" title="Akun">S</div>`;
   }
 
-  // bind mode switch
-  const seg = document.getElementById("modeSeg");
-  if (seg) seg.onclick = (e) => {
+  // bind mode switch (top bar + mobile menu share this handler)
+  const switchMode = (e) => {
     const b = e.target.closest("[data-mode]"); if (!b) return;
     State.app = b.dataset.mode;
     go(State.app === "vendor" ? "v-home" : "home");
   };
+  const seg = document.getElementById("modeSeg");
+  if (seg) seg.onclick = switchMode;
+  const segMob = document.getElementById("modeSegMob");
+  if (segMob) segMob.onclick = switchMode;
+
+  // burger toggles the mobile menu
+  const burger = document.getElementById("navBurger");
+  if (burger) burger.onclick = (e) => { e.stopPropagation(); $navLinks.classList.toggle("open"); };
+
   // keep global search in sync
   if ($globalSearch) $globalSearch.value = (typeof searchFilter !== "undefined" ? searchFilter.q : "") || "";
 }
