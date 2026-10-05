@@ -24,7 +24,7 @@ Routes["v-home"] = () => {
         </div>
       </div>
 
-      <div class="detail" style="grid-template-columns:1.3fr 0.7fr;margin-top:28px;align-items:start">
+      <div class="detail detail--split" style="margin-top:28px">
         <div>
           <div class="section-head"><h2 style="font-size:20px">🔔 Pesanan Baru</h2><a data-go="v-orders">Lihat semua</a></div>
           <div class="stack">
@@ -199,7 +199,7 @@ Routes["v-calendar"] = () => ({
   body: `
   <div class="container">
     ${pageHead("Kalender Ketersediaan", "Klik tanggal untuk mengubah status", false)}
-    <div class="detail" style="grid-template-columns:1.2fr 0.8fr;align-items:start">
+    <div class="detail detail--split">
       <div>
         <div class="note mb">📅 Klik tanggal: hijau (tersedia) → kuning (terbatas) → abu (penuh/libur).</div>
         <div id="vCalHost"></div>

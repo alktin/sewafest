@@ -241,7 +241,7 @@ Routes["checkout"] = () => {
     body: `
     <div class="container">
       ${pageHead("Checkout", null)}
-      <div class="detail" style="grid-template-columns:1.3fr 0.7fr">
+      <div class="detail detail--split">
         <div>
           <b style="font-size:15px">📍 Alamat Pengiriman</b>
           <div class="card mt-s">

@@ -48,6 +48,7 @@ body {
   -webkit-font-smoothing: antialiased;
   line-height: 1.5;
   min-height: 100vh;
+  overflow-x: hidden; /* guard against any stray wide element on small screens */
 }
 
 img { display: block; max-width: 100%; }
@@ -298,6 +299,8 @@ body.auth-mode .navbar, body.auth-mode .footer { display: none; }
    PRODUCT DETAIL (two column)
    ============================================================ */
 .detail { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 36px; align-items: start; }
+/* split variant: wider main column + narrower side rail (checkout, dashboard, vendor calendar) */
+.detail--split { grid-template-columns: 1.3fr 0.7fr; }
 .detail__gallery { position: sticky; top: calc(var(--nav-h) + 20px); }
 .detail__main-img { width: 100%; height: 420px; object-fit: cover; border-radius: var(--radius-lg); box-shadow: var(--shadow); }
 .detail__thumbs { display: flex; gap: 10px; margin-top: 12px; }
@@ -570,7 +573,7 @@ body.auth-mode .navbar, body.auth-mode .footer { display: none; }
   .nav-links, .nav-search { display: none; }
   .nav-burger { display: block; }
   .nav-links.open { display: flex; position: absolute; top: var(--nav-h); left: 0; right: 0; flex-direction: column; background: #fff; border-bottom: 1px solid var(--line); padding: 10px 24px; gap: 2px; }
-  .detail { grid-template-columns: 1fr; }
+  .detail, .detail--split { grid-template-columns: 1fr; }
   .detail__gallery { position: static; }
   .detail__main-img { height: 320px; }
   .v-metrics, .stat-strip { grid-template-columns: repeat(2, 1fr); }
@@ -588,4 +591,19 @@ body.auth-mode .navbar, body.auth-mode .footer { display: none; }
   .minikpi, .vstats { grid-template-columns: 1fr; }
   .footer__inner { grid-template-columns: 1fr; }
   .bubble { max-width: 82%; }
+  /* calendar must fit the viewport, never overflow */
+  .cal { padding: 14px; }
+  .cal__grid { gap: 4px; }
+  .cal__cell { font-size: 12px; min-width: 0; border-radius: 8px; }
+  .cal__dow { font-size: 10px; }
+  .cal__legend { gap: 12px; }
+  /* detail/split grids stack with a tighter gap on phones */
+  .detail { gap: 20px; }
+  .page-title { font-size: 24px; }
+  .v-hero, .hero { padding: 24px 20px; }
+  .v-metrics { gap: 12px; }
+}
+/* belt-and-braces: stacked split grids never render as 2 columns below tablet */
+@media (max-width: 860px) {
+  .detail--split { grid-template-columns: 1fr !important; }
 }
