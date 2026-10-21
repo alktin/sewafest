@@ -114,6 +114,24 @@ Routes["home"] = () => {
     </div>
 
     <div class="container section--tight">
+      <div class="two-ways">
+        <div class="way">
+          <div class="way__ic">🛒</div>
+          <h3>Sewa Sendiri</h3>
+          <p class="muted">Pilih & bandingkan produk dari vendor, atur tanggal, bayar. Cocok kalau kamu mau kontrol penuh.</p>
+          <button class="btn btn--ghost" data-go="search">Jelajahi Marketplace →</button>
+        </div>
+        <div class="way way--eo">
+          <span class="way__tag">Terima Jadi</span>
+          <div class="way__ic">🎯</div>
+          <h3>Serahkan ke SewaFest (EO)</h3>
+          <p>Pilih paket acara, <b>SewaFest yang mengurus</b> dekorasi, katering, sound, & setup. Kamu tinggal datang.</p>
+          <button class="btn btn--gold" data-go="packages">Lihat Paket EO →</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="container section--tight">
       <div class="section-head"><h2>Kategori</h2><a data-go="search">Lihat semua</a></div>
       <div class="cat-grid">
         ${CATEGORIES.map(c => `<div class="cat" data-go="search/${c.id}">
@@ -131,6 +149,11 @@ Routes["home"] = () => {
     <div class="container section--tight">
       <div class="section-head"><h2>📸 Instagrammable</h2><a data-go="search">Semua produk</a></div>
       <div class="prod-grid">${insta.map(p => productCard(p)).join("")}</div>
+    </div>
+
+    <div class="container section--tight">
+      <div class="section-head"><h2>🎯 Paket EO Terpopuler</h2><a data-go="packages">Semua paket</a></div>
+      <div class="pkg-grid">${PACKAGES.filter(p => p.popular).map(packageCard).join("")}</div>
     </div>
 
     <div class="container section--tight">

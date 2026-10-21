@@ -266,6 +266,48 @@ body.auth-mode .navbar, body.auth-mode .footer { display: none; }
 .pcard__price span { font-size: 11.5px; color: var(--ink-soft); }
 
 /* ============================================================
+   PAKET EO (SewaFest as Event Organizer)
+   ============================================================ */
+/* Two ways to use SewaFest (home) */
+.two-ways { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.way { background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 28px; box-shadow: var(--shadow-sm); position: relative; overflow: hidden; }
+.way__ic { font-size: 38px; }
+.way h3 { font-family: var(--font-display); font-size: 22px; margin: 10px 0 8px; }
+.way p { font-size: 14.5px; margin-bottom: 18px; }
+.way .btn { width: 100%; }
+.way--eo { background: var(--grad-brand); color: #fff; border: 0; }
+.way--eo p { opacity: 0.95; }
+.way__tag { position: absolute; top: 16px; right: 16px; background: var(--gold); color: #4a2600; font-size: 11px; font-weight: 800; padding: 5px 11px; border-radius: 999px; }
+
+/* EO steps */
+.eo-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 24px; }
+.eo-step { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow-sm); }
+.eo-step__n { width: 34px; height: 34px; border-radius: 999px; background: var(--grad-brand); color: #fff; display: grid; place-items: center; font-weight: 800; margin-bottom: 10px; }
+.eo-step b { display: block; font-size: 14.5px; margin-bottom: 4px; }
+.eo-step small { color: var(--ink-soft); font-size: 12.5px; }
+
+/* Package grid + cards */
+.pkg-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.pkg-card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; cursor: pointer; box-shadow: var(--shadow-sm); transition: 0.18s; display: flex; flex-direction: column; }
+.pkg-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.pkg-card__img { position: relative; height: 180px; }
+.pkg-card__photo { width: 100%; height: 100%; object-fit: cover; }
+.pkg-card__badge { position: absolute; top: 12px; left: 12px; background: var(--gold); color: #4a2600; font-size: 11px; font-weight: 800; padding: 5px 11px; border-radius: 999px; }
+.pkg-card__eo { position: absolute; bottom: 12px; left: 12px; background: rgba(42,14,58,0.85); color: #fff; font-size: 11px; font-weight: 700; padding: 5px 11px; border-radius: 999px; }
+.pkg-card__body { padding: 18px; flex: 1; display: flex; flex-direction: column; }
+.pkg-card__body h3 { font-size: 17px; font-weight: 800; }
+.pkg-card__body p { font-size: 13.5px; margin: 6px 0 12px; }
+.pkg-card__meta { display: flex; gap: 14px; font-size: 12.5px; color: var(--ink-soft); margin-bottom: 14px; }
+.pkg-card__foot { margin-top: auto; display: flex; align-items: center; justify-content: space-between; }
+.pkg-card__foot b { font-size: 18px; color: var(--plum-900); }
+
+/* EO includes list + badges */
+.eo-incl { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.eo-incl__item { display: flex; gap: 10px; align-items: flex-start; font-size: 13.5px; }
+.eo-incl__ic { font-size: 18px; flex: 0 0 auto; }
+.eo-badges { display: flex; gap: 8px; flex-wrap: wrap; }
+
+/* ============================================================
    CARD / PANEL
    ============================================================ */
 .card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow-sm); }
@@ -588,6 +630,9 @@ body.auth-mode .navbar, body.auth-mode .footer { display: none; }
   .v-metrics, .stat-strip { grid-template-columns: repeat(2, 1fr); }
   .prod-grid { grid-template-columns: repeat(2, 1fr); }
   .tile-grid { grid-template-columns: repeat(2, 1fr); }
+  .pkg-grid { grid-template-columns: repeat(2, 1fr); }
+  .eo-steps { grid-template-columns: repeat(2, 1fr); }
+  .two-ways { grid-template-columns: 1fr; }
   .auth-wrap { grid-template-columns: 1fr; }
   .auth-side { display: none; }
   .hero h1 { font-size: 34px; }
@@ -605,6 +650,8 @@ body.auth-mode .navbar, body.auth-mode .footer { display: none; }
   .nav-burger { font-size: 22px; }
   .cat-grid { grid-template-columns: repeat(3, 1fr); }
   .prod-grid { grid-template-columns: repeat(2, 1fr); }
+  .pkg-grid { grid-template-columns: 1fr; }
+  .eo-incl { grid-template-columns: 1fr; }
   .minikpi, .vstats { grid-template-columns: 1fr; }
   .footer__inner { grid-template-columns: 1fr; }
   .bubble { max-width: 82%; }

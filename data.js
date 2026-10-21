@@ -165,6 +165,77 @@ function makeAvailability(seed) {
   return map;
 }
 
+// ============================================================
+//  PAKET EO — SewaFest sebagai Event Organizer ("terima jadi")
+//  SewaFest yang mengurus vendor, makanan, dekor, sound, dll.
+// ============================================================
+const PACKAGES = [
+  {
+    id: "pkg-ultah", icon: "🎂", name: "Paket Ulang Tahun Anak",
+    img: img("1530103862676-de8c9debad1d", 800),
+    tagline: "Pesta ulang tahun anak yang meriah & instagrammable — tinggal datang.",
+    guests: "hingga 50 tamu", duration: "4 jam acara", price: 4500000, priceNote: "mulai dari",
+    popular: true, badge: "Terlaris",
+    includes: [
+      ["🎈", "Dekorasi tema custom + backdrop foto"],
+      ["⛺", "Tenda / area indoor + kursi & meja tamu"],
+      ["🍽️", "Katering 50 porsi + kue ulang tahun"],
+      ["🔊", "Sound system + MC/host anak"],
+      ["📸", "Dokumentasi foto 2 jam"],
+      ["🧹", "Setup & bongkar oleh tim SewaFest"],
+    ],
+    timeline: ["Konsultasi tema (gratis)", "SewaFest atur semua vendor", "Setup H-1 / hari-H", "Acara berjalan", "Bongkar & beres"],
+  },
+  {
+    id: "pkg-lamaran", icon: "💍", name: "Paket Lamaran / Engagement",
+    img: img("1519225421980-715cb0215aed", 800),
+    tagline: "Momen lamaran elegan dengan dekorasi flower wall & katering premium.",
+    guests: "hingga 80 tamu", duration: "5 jam acara", price: 9500000, priceNote: "mulai dari",
+    popular: true, badge: "Premium",
+    includes: [
+      ["🌸", "Flower wall + dekorasi meja akad/lamaran"],
+      ["🪑", "Kursi & meja bulat 80 tamu + taplak satin"],
+      ["🍽️", "Prasmanan premium 80 porsi + pramusaji"],
+      ["🔊", "Sound system + MC profesional"],
+      ["💡", "Lighting ambience + fairy light"],
+      ["📸", "Dokumentasi foto & video"],
+    ],
+    timeline: ["Konsultasi konsep (gratis)", "Proposal & RAB disetujui", "Koordinasi vendor oleh SewaFest", "Setup hari-H", "Acara & dokumentasi"],
+  },
+  {
+    id: "pkg-7bulanan", icon: "🤰", name: "Paket 7 Bulanan / Aqiqah",
+    img: img("1464366400600-7168b8af9bc3", 800),
+    tagline: "Acara syukuran keluarga, rapi dan tenang — semua diurus.",
+    guests: "hingga 60 tamu", duration: "4 jam acara", price: 6000000, priceNote: "mulai dari",
+    popular: false, badge: null,
+    includes: [
+      ["⛺", "Tenda dekorasi + karpet + kursi tamu"],
+      ["🎈", "Dekorasi lembut sesuai tema syukuran"],
+      ["🍽️", "Katering 60 porsi + nasi kotak pulang"],
+      ["🔊", "Sound system + pembawa acara"],
+      ["🧹", "Setup & bongkar oleh tim SewaFest"],
+    ],
+    timeline: ["Konsultasi (gratis)", "SewaFest atur vendor", "Setup H-1", "Acara berjalan", "Bongkar & beres"],
+  },
+  {
+    id: "pkg-gathering", icon: "🏢", name: "Paket Gathering / Corporate",
+    img: img("1540039155733-5bb30b53aa14", 800),
+    tagline: "Family gathering atau acara kantor dengan panggung & sound besar.",
+    guests: "hingga 150 tamu", duration: "6 jam acara", price: 15000000, priceNote: "mulai dari",
+    popular: false, badge: null,
+    includes: [
+      ["🎤", "Panggung 4×6m + sound system 2000W + teknisi"],
+      ["⛺", "Tenda besar + kursi & meja 150 tamu"],
+      ["🍽️", "Katering prasmanan 150 porsi"],
+      ["💡", "Lighting panggung + backdrop branding"],
+      ["📸", "Dokumentasi + MC profesional"],
+      ["🧹", "Full setup & teardown oleh SewaFest"],
+    ],
+    timeline: ["Brief & survei lokasi", "Proposal + RAB", "Koordinasi semua vendor", "Setup & gladi", "Acara & bongkar"],
+  },
+];
+function getPackage(id) { return PACKAGES.find(p => p.id === id); }
+
 // Customer-side orders (history)
 const ORDERS = [
   { id: "SWF-240931", productId: "p3", qty: 1, status: "done", date: "28 Sep 2026",

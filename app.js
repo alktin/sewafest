@@ -90,7 +90,7 @@ function renderNavbar(active, isAuth) {
 
   const links = State.app === "vendor"
     ? [["v-home","Dashboard"],["v-orders","Pesanan"],["v-calendar","Kalender"],["v-insights","Insight"],["v-inventory","Gudang"],["v-chats","Pesan"]]
-    : [["home","Beranda"],["search","Marketplace"],["orders","Pesanan"],["chats","Pesan"]];
+    : [["home","Beranda"],["search","Marketplace"],["packages","Paket EO"],["orders","Pesanan"],["chats","Pesan"]];
 
   // group a route to its nav key for active-state
   const activeKey = navActiveKey(active);
@@ -154,6 +154,7 @@ function navActiveKey(tab) {
     cart: "search", checkout: "search", payment: "search",
     orders: "orders", order: "orders", review: "orders",
     chats: "chats", chat: "chats", profile: "home",
+    packages: "packages", package: "packages", "eo-request": "packages",
     "v-home": "v-home", "v-orders": "v-orders", "v-order": "v-orders",
     "v-calendar": "v-calendar", "v-insights": "v-insights", "v-inventory": "v-inventory",
     "v-chats": "v-chats", "v-chat": "v-chats",
