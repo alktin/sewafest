@@ -60,7 +60,7 @@ Routes["book"] = (id) => {
       document.getElementById("addBtn").onclick = () => {
         if (!State.draft.start) return;
         State.cart.push({ productId: p.id, qty: State.draft.qty, start: State.draft.start, end: State.draft.end });
-        toast("Ditambahkan ke keranjang 🛒");
+        toast("Ditambahkan ke keranjang");
         go("cart");
       };
     },
@@ -187,7 +187,7 @@ Routes["cart"] = () => {
               ${imgTag(l.p.img, l.p.name, "cart-item__img", l.p.cat, l.p.icon)}
               <div class="cart-item__info">
                 <b>${escapeHtml(l.p.name)}</b>
-                <small>📅 ${l.label} · ${l.days > 1 ? l.days + " hari · " : ""}${l.item.qty}×</small>
+                <small>${l.label} · ${l.days > 1 ? l.days + " hari · " : ""}${l.item.qty}×</small>
                 <small>${getVendor(l.p.vendor).name}</small>
                 <b style="color:var(--plum-900)">${money(l.sub)}</b>
               </div>
@@ -202,7 +202,7 @@ Routes["cart"] = () => {
         <div class="summary-line total"><span>Total</span><span>${money(total)}</span></div>
       </div>
 
-      <div class="note mt">🔒 Pembayaran aman & tercatat. Deposit (jika ada) dikembalikan setelah barang kembali.</div>
+      <div class="note mt">Pembayaran aman & tercatat. Deposit (jika ada) dikembalikan setelah barang kembali.</div>
 
       <div class="mt">
         <button class="btn btn--primary btn--block btn--lg" data-go="checkout">Lanjut ke Checkout · ${money(total)}</button>
@@ -243,14 +243,14 @@ Routes["checkout"] = () => {
       ${pageHead("Checkout", null)}
       <div class="detail detail--split">
         <div>
-          <b style="font-size:15px">📍 Alamat Pengiriman</b>
+          <b style="font-size:15px">Alamat Pengiriman</b>
           <div class="card mt-s">
             <div class="field"><label>Nama Penerima</label><input id="coName" value="Sari Rahayu" /></div>
             <div class="field"><label>No. HP</label><input id="coPhone" value="0812-3456-7890" /></div>
             <div class="field" style="margin-bottom:0"><label>Alamat Lengkap Acara</label><textarea id="coAddr">Jl. Kemakmuran No. 12, RT 03/RW 05, Bekasi Timur</textarea></div>
           </div>
 
-          <b style="font-size:15px;display:block;margin-top:22px">💳 Metode Pembayaran</b>
+          <b style="font-size:15px;display:block;margin-top:22px">Metode Pembayaran</b>
           <div class="stack mt-s" id="payOpts">
             ${pays.map(([id, ic, name, sub]) => `
               <div class="pay-opt ${State.draft.payment === id ? "is-active" : ""}" data-pay="${id}">
@@ -331,7 +331,7 @@ function drawWaiting(host, method, methodName, total) {
   }, 1000);
 
   const copy = host.querySelector("#copyVa");
-  if (copy) copy.onclick = () => toast("Nomor VA disalin 📋");
+  if (copy) copy.onclick = () => toast("Nomor VA disalin");
   host.querySelector("#simPay").onclick = () => { clearInterval(host._t); drawSuccess(host, total); };
   host.querySelector("#simCancel").onclick = () => { clearInterval(host._t); drawCancel(host); };
 }
@@ -345,7 +345,7 @@ function drawSuccess(host, total) {
       <h2>Pembayaran Berhasil!</h2>
       <p>Pesanan <b>${orderId}</b> sedang diteruskan ke vendor.</p>
       <p class="muted">Total dibayar: <b>${money(total)}</b></p>
-      <div class="note" style="text-align:left;margin-top:20px">🎉 Vendor akan segera mengonfirmasi & menyiapkan barang. Pantau statusnya di <b>Riwayat Pesanan</b>.</div>
+      <div class="note" style="text-align:left;margin-top:20px">Vendor akan segera mengonfirmasi & menyiapkan barang. Pantau statusnya di <b>Riwayat Pesanan</b>.</div>
       <div class="row mt" style="gap:12px;justify-content:center">
         <button class="btn btn--primary btn--lg" data-go="orders">Lihat Pesanan Saya</button>
         <button class="btn btn--ghost btn--lg" data-go="home">Ke Beranda</button>

@@ -38,7 +38,7 @@ Routes["orders"] = () => ({
           ${imgTag(p.img, p.name, "lrow__img", p.cat, p.icon)}
           <div class="lrow__main">
             <b>${escapeHtml(p.name)}</b>
-            <small>${o.id} · 🎉 ${o.eventDate}</small>
+            <small>${o.id} · ${o.eventDate}</small>
             <small style="color:var(--plum-900);font-weight:700">${money(o.total)}</small>
           </div>
           <div class="lrow__right">
@@ -98,7 +98,7 @@ Routes["order"] = (id) => {
       <div class="card">
         <b style="font-size:15px">Detail Acara</b>
         <div class="spec-list mt-s">
-          <div class="spec"><span>Tanggal acara</span><span>🎉 ${o.eventDate}</span></div>
+          <div class="spec"><span>Tanggal acara</span><span>${o.eventDate}</span></div>
           <div class="spec"><span>Tanggal pesan</span><span>${o.date}</span></div>
           <div class="spec"><span>Alamat</span><span>${escapeHtml(o.address)}</span></div>
         </div>
@@ -117,7 +117,7 @@ Routes["order"] = (id) => {
       </div>
 
       <div class="row mt" style="gap:12px">
-        <button class="btn btn--ghost" data-go="chats">💬 Chat Vendor</button>
+        <button class="btn btn--ghost" data-go="chats">Chat Vendor</button>
         ${o.status === "done" && !o.reviewed ? `<button class="btn btn--primary" data-go="review/${o.id}">★ Beri Ulasan</button>` : ""}
         ${o.status === "wait" ? `<button class="btn btn--gold" data-go="checkout">Bayar Sekarang</button>` : ""}
       </div>
@@ -162,7 +162,7 @@ Routes["review"] = (id) => {
     `,
     after: () => {
       let rating = 0;
-      const labels = ["", "Buruk 😞", "Kurang 😐", "Cukup 🙂", "Bagus 😀", "Luar biasa 🤩"];
+      const labels = ["", "Buruk", "Kurang", "Cukup", "Bagus", "Luar biasa"];
       const pick = document.getElementById("starPick");
       pick.onclick = (e) => {
         const s = e.target.closest("[data-star]"); if (!s) return;
@@ -171,9 +171,9 @@ Routes["review"] = (id) => {
         document.getElementById("starLabel").textContent = labels[rating];
       };
       document.getElementById("submitRev").onclick = () => {
-        if (!rating) { toast("Pilih rating bintang dahulu ⭐"); return; }
+        if (!rating) { toast("Pilih rating bintang dahulu"); return; }
         o.reviewed = true;
-        toast("Ulasan terkirim, terima kasih! 💜");
+        toast("Ulasan terkirim, terima kasih!");
         go("order/" + o.id);
       };
     },
@@ -200,7 +200,7 @@ Routes["chats"] = () => ({
         </div>`;
       }).join("")}
     </div>
-    <div class="note mt">💬 Negosiasi, tanya ketersediaan, dan konfirmasi detail acara di satu inbox.</div>
+    <div class="note mt">Negosiasi, tanya ketersediaan, dan konfirmasi detail acara di satu inbox.</div>
     <div style="height:20px"></div>
   </div>
   `,
@@ -242,7 +242,7 @@ Routes["chat"] = (vendorId) => {
         list.insertAdjacentHTML("beforeend", bubbleHtml({ from: "me", text: txt, t }));
         input.value = ""; list.scrollTop = list.scrollHeight;
         setTimeout(() => {
-          const reply = { from: "them", text: "Baik kak, kami cek dulu ketersediaannya ya 😊", t };
+          const reply = { from: "them", text: "Baik kak, kami cek dulu ketersediaannya ya", t };
           c.msgs.push(reply);
           list.insertAdjacentHTML("beforeend", bubbleHtml(reply));
           list.scrollTop = list.scrollHeight;

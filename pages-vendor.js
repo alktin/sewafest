@@ -14,7 +14,7 @@ Routes["v-home"] = () => {
     body: `
     <div class="container">
       <div class="v-hero">
-        <small>Halo, ${escapeHtml(v.name)} 👋</small>
+        <small>Halo, ${escapeHtml(v.name)}</small>
         <h2>Dashboard Bisnis Vendor</h2>
         <div class="v-metrics">
           <div class="v-metric"><b>${rupiahShort(todayIncome)}</b><span>Pendapatan Okt (+${growth}%)</span></div>
@@ -26,21 +26,21 @@ Routes["v-home"] = () => {
 
       <div class="detail detail--split" style="margin-top:28px">
         <div>
-          <div class="section-head"><h2 style="font-size:20px">🔔 Pesanan Baru</h2><a data-go="v-orders">Lihat semua</a></div>
+          <div class="section-head"><h2 style="font-size:20px">Pesanan Baru</h2><a data-go="v-orders">Lihat semua</a></div>
           <div class="stack">
             ${newOrders.length ? newOrders.map(vendorOrderRow).join("")
               : `<div class="empty" style="padding:30px"><div class="big">✅</div><b>Tidak ada pesanan baru</b></div>`}
           </div>
         </div>
         <div>
-          <div class="section-head"><h2 style="font-size:20px">📊 Pendapatan</h2><a data-go="v-insights">Detail</a></div>
+          <div class="section-head"><h2 style="font-size:20px">Pendapatan</h2><a data-go="v-insights">Detail</a></div>
           <div id="miniChart"></div>
-          <div class="note mt">💡 Pendapatan Oktober naik ${growth}% dari September.</div>
+          <div class="note mt">Pendapatan Oktober naik ${growth}% dari September.</div>
         </div>
       </div>
 
       <div class="section--tight">
-        <div class="section-head"><h2 style="font-size:20px">⚡ Akses Cepat</h2></div>
+        <div class="section-head"><h2 style="font-size:20px">Akses Cepat</h2></div>
         <div class="tile-grid">
           <div class="tile" data-go="v-inventory"><div class="tile-ic">📦</div><span>Gudang</span></div>
           <div class="tile" data-go="v-calendar"><div class="tile-ic">📅</div><span>Kalender</span></div>
@@ -58,10 +58,10 @@ Routes["v-home"] = () => {
 function vendorOrderRow(o) {
   const m = STATUS_META[o.status];
   return `<div class="lrow" data-go="v-order/${o.id}">
-    <div class="lrow__ic">📋</div>
+    <div class="lrow__ic">🗒️</div>
     <div class="lrow__main">
       <b>${escapeHtml(o.product)}</b>
-      <small>${escapeHtml(o.customer)} · ${o.qty}× · 🎉 ${o.eventDate}</small>
+      <small>${escapeHtml(o.customer)} · ${o.qty}× · ${o.eventDate}</small>
       <small style="color:var(--plum-900);font-weight:700">${money(o.total)}</small>
     </div>
     <div class="lrow__right"><span class="status-pill ${m.pill}">${m.label}</span></div>
@@ -129,10 +129,10 @@ Routes["v-order"] = (id) => {
         <div class="spec-list mt-s">
           <div class="spec"><span>Nama</span><span>${escapeHtml(o.customer)}</span></div>
           <div class="spec"><span>No. HP</span><span>${escapeHtml(o.phone)}</span></div>
-          <div class="spec"><span>Tanggal acara</span><span>🎉 ${o.eventDate}</span></div>
+          <div class="spec"><span>Tanggal acara</span><span>${o.eventDate}</span></div>
           <div class="spec"><span>Alamat</span><span>${escapeHtml(o.address)}</span></div>
         </div>
-        <button class="btn btn--ghost btn--sm mt" data-go="v-chats">💬 Chat Penyewa</button>
+        <button class="btn btn--ghost btn--sm mt" data-go="v-chats">Chat Penyewa</button>
       </div>
       <div class="mt" id="vActions">
         ${o.status === "new" ? `
@@ -150,9 +150,9 @@ Routes["v-order"] = (id) => {
       const accept = document.getElementById("acceptBtn");
       const reject = document.getElementById("rejectBtn");
       const done = document.getElementById("doneBtn");
-      if (accept) accept.onclick = () => { o.status = "active"; toast("Pesanan diterima ✓"); go("v-orders"); };
+      if (accept) accept.onclick = () => { o.status = "active"; toast("Pesanan diterima"); go("v-orders"); };
       if (reject) reject.onclick = () => { o.status = "cancel"; toast("Pesanan ditolak"); go("v-orders"); };
-      if (done) done.onclick = () => { o.status = "done"; toast("Pesanan selesai 🎉"); go("v-orders"); };
+      if (done) done.onclick = () => { o.status = "done"; toast("Pesanan selesai"); go("v-orders"); };
     },
   };
 };
@@ -187,7 +187,7 @@ Routes["v-inventory"] = () => ({
         </div>`;
       }).join("")}
     </div>
-    <div class="note mt">📦 Stok tersinkron otomatis dengan kalender ketersediaan — mencegah double booking.</div>
+    <div class="note mt">Stok tersinkron otomatis dengan kalender ketersediaan — mencegah double booking.</div>
     <div style="height:20px"></div>
   </div>
   `,
@@ -201,7 +201,7 @@ Routes["v-calendar"] = () => ({
     ${pageHead("Kalender Ketersediaan", "Klik tanggal untuk mengubah status", false)}
     <div class="detail detail--split">
       <div>
-        <div class="note mb">📅 Klik tanggal: hijau (tersedia) → kuning (terbatas) → abu (penuh/libur).</div>
+        <div class="note mb">Klik tanggal: hijau (tersedia) → kuning (terbatas) → abu (penuh/libur).</div>
         <div id="vCalHost"></div>
       </div>
       <div class="card">
@@ -210,7 +210,7 @@ Routes["v-calendar"] = () => ({
           ${VENDOR_ORDERS.filter(o => o.status !== "done" && o.status !== "cancel").map(o => `
             <div class="row between" style="padding:10px 0;border-bottom:1px solid var(--line)">
               <div><b style="font-size:14px">${escapeHtml(o.product)}</b><br><small class="muted">${escapeHtml(o.customer)}</small></div>
-              <span class="tag tag--plum">🎉 ${o.eventDate}</span>
+              <span class="tag tag--plum">${o.eventDate}</span>
             </div>`).join("")}
         </div>
       </div>
@@ -278,7 +278,7 @@ Routes["v-insights"] = () => {
         <div class="k"><b>${VENDOR_ME.orders}</b><span>Total order</span></div>
       </div>
 
-      <div class="section-head mt"><h2 style="font-size:20px">📊 Perbandingan Pendapatan</h2></div>
+      <div class="section-head mt"><h2 style="font-size:20px">Perbandingan Pendapatan</h2></div>
       <div id="bigChart"></div>
 
       <div class="card mt">
@@ -286,11 +286,11 @@ Routes["v-insights"] = () => {
         <div class="stack mt-s" style="gap:12px">
           <div class="row between"><span class="muted">📈 Pertumbuhan vs bulan lalu</span><b style="color:var(--mint)">+${growth}%</b></div>
           <div class="row between"><span class="muted">🏆 Produk terlaris</span><b>Tenda 6×8m</b></div>
-          <div class="row between"><span class="muted">⭐ Rating rata-rata</span><b>${VENDOR_ME.rating}</b></div>
-          <div class="row between"><span class="muted">⚡ Waktu respon</span><b>~${VENDOR_ME.responseMin} menit</b></div>
+          <div class="row between"><span class="muted">Rating rata-rata</span><b>${VENDOR_ME.rating}</b></div>
+          <div class="row between"><span class="muted">Waktu respon</span><b>~${VENDOR_ME.responseMin} menit</b></div>
         </div>
       </div>
-      <div class="note mt">🎯 Pendapatanmu tumbuh konsisten 4 bulan terakhir. Pertimbangkan tambah stok <b>Tenda 6×8m</b> yang sering kehabisan.</div>
+      <div class="note mt">Pendapatanmu tumbuh konsisten 4 bulan terakhir. Pertimbangkan tambah stok <b>Tenda 6×8m</b> yang sering kehabisan.</div>
       <div style="height:20px"></div>
     </div>
     `,

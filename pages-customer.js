@@ -6,8 +6,7 @@
 Routes["splash"] = () => ({
   tab: null,
   body: `<div class="splash">
-    <div class="confetti">🎉🎈✨🎊🎉🎈✨🎊🎉🎈✨🎊🎉🎈✨🎊🎉🎈✨🎊</div>
-    <div class="logo-mark">SewaFest</div>
+    <div class="logo-chip logo-chip--lg"><img src="logo.png" alt="SewaFest" /></div>
     <p class="tagline">"Rayakan Lebih Bijak, Sewa Lebih Mudah"</p>
     <div class="splash__cta">
       <button class="btn btn--gold btn--lg" data-go="home">Masuk ke Platform</button>
@@ -23,7 +22,7 @@ Routes["login"] = () => ({
     <div class="auth-side">
       ${imgTag(HERO_IMG, "Pesta", "", "dekor", "🎉")}
       <div class="as-content">
-        <div class="logo-mark">SewaFest</div>
+        <div class="logo-chip"><img src="logo.png" alt="SewaFest" /></div>
         <p class="tagline">"Rayakan Lebih Bijak, Sewa Lebih Mudah"</p>
         <ul>
           <li>✓ Semua vendor Bekasi dalam satu platform</li>
@@ -36,7 +35,7 @@ Routes["login"] = () => ({
     <div class="auth-form">
       <div class="auth-form__inner">
         <h2>Masuk</h2>
-        <p class="sub">Selamat datang kembali di SewaFest 👋</p>
+        <p class="sub">Selamat datang kembali di SewaFest</p>
         <div class="field"><label>Email / No. HP</label><input value="sari@email.com" /></div>
         <div class="field"><label>Kata Sandi</label><input type="password" value="••••••••" /></div>
         <button class="btn btn--primary btn--block" data-go="home">Masuk</button>
@@ -59,7 +58,7 @@ Routes["signup"] = () => ({
     <div class="auth-side">
       ${imgTag(CTA_IMG, "Acara", "", "panggung", "🎊")}
       <div class="as-content">
-        <div class="logo-mark">SewaFest</div>
+        <div class="logo-chip"><img src="logo.png" alt="SewaFest" /></div>
         <p class="tagline">Mulai sewa untuk pestamu hari ini</p>
         <ul>
           <li>✓ Gratis daftar, tanpa biaya tersembunyi</li>
@@ -142,17 +141,17 @@ Routes["home"] = () => {
     </div>
 
     <div class="container section--tight">
-      <div class="section-head"><h2>🔥 Paling Dicari</h2><a data-go="search">Semua produk</a></div>
+      <div class="section-head"><h2>Paling Dicari</h2><a data-go="search">Semua produk</a></div>
       <div class="prod-grid">${popular.map(p => productCard(p)).join("")}</div>
     </div>
 
     <div class="container section--tight">
-      <div class="section-head"><h2>📸 Instagrammable</h2><a data-go="search">Semua produk</a></div>
+      <div class="section-head"><h2>Instagrammable</h2><a data-go="search">Semua produk</a></div>
       <div class="prod-grid">${insta.map(p => productCard(p)).join("")}</div>
     </div>
 
     <div class="container section--tight">
-      <div class="section-head"><h2>🎯 Paket EO Terpopuler</h2><a data-go="packages">Semua paket</a></div>
+      <div class="section-head"><h2>Paket EO Terpopuler</h2><a data-go="packages">Semua paket</a></div>
       <div class="pkg-grid">${PACKAGES.filter(p => p.popular).map(packageCard).join("")}</div>
     </div>
 
@@ -240,7 +239,7 @@ Routes["product"] = (id) => {
   if (!p) return { body: notFound(), tab: "search" };
   const v = getVendor(p.vendor);
   const revs = REVIEWS[p.id] || [];
-  const fav = State.favorites.has(p.id) ? "💜 Favorit" : "🤍 Simpan";
+  const fav = State.favorites.has(p.id) ? "♥ Favorit" : "♡ Simpan";
   // thumbnails: product + its vendor cover + category image
   const thumbs = [p.img, v.cover, (CATEGORIES.find(c => c.id === p.cat) || {}).img].filter(Boolean);
   return {
@@ -270,7 +269,7 @@ Routes["product"] = (id) => {
               ${imgTag(v.logo, v.name, "vlogo", p.cat, v.icon)}
               <div class="vinfo">
                 <b>${escapeHtml(v.name)} ${v.verified ? '<span class="verified">✓ Terverifikasi</span>' : ""}</b>
-                <small>📍 ${v.area} · ★ ${v.rating} · Respon ~${v.responseMin} mnt</small>
+                <small>${v.area} · ★ ${v.rating} · Respon ~${v.responseMin} mnt</small>
               </div>
               <span style="color:var(--ink-soft)">›</span>
             </div>
@@ -279,7 +278,7 @@ Routes["product"] = (id) => {
           <div class="row mt" style="gap:12px">
             <button class="btn btn--primary btn--lg" style="flex:1" data-go="book/${p.id}">Sewa Sekarang</button>
             <button class="btn btn--ghost btn--lg" data-fav="${p.id}">${fav}</button>
-            <button class="btn btn--ghost btn--lg" data-go="chats">💬</button>
+            <button class="btn btn--ghost btn--lg" data-go="chats">Chat</button>
           </div>
 
           <div class="card mt">
@@ -337,7 +336,7 @@ function reviewHtml(r) {
     </div>
     <div class="review__stars">${stars(r.stars)}</div>
     <p>${escapeHtml(r.text)}</p>
-    ${r.photos.length ? `<div class="review__photos">${r.photos.map(() => '<span>🖼️</span>').join("")}</div>` : ""}
+    ${r.photos.length ? `<div class="review__photos">${r.photos.map(() => '<span></span>').join("")}</div>` : ""}
   </div>`;
 }
 
@@ -355,7 +354,7 @@ Routes["vendor"] = (id) => {
         ${imgTag(v.logo, v.name, "vlogo", "lainnya", v.icon)}
         <div class="vmeta">
           <h1>${escapeHtml(v.name)} ${v.verified ? '<span class="verified" style="font-size:16px">✓</span>' : ""}</h1>
-          <div class="vsub">📍 ${v.area} · Sejak ${v.since}</div>
+          <div class="vsub">${v.area} · Sejak ${v.since}</div>
           <div class="pill-row mt-s">${v.badges.map(b => `<span class="tag tag--plum">${b}</span>`).join("")}</div>
         </div>
       </div>
@@ -369,7 +368,7 @@ Routes["vendor"] = (id) => {
       <div class="card mt">
         <b style="font-size:15px">Tentang Vendor</b>
         <p class="muted mt-s">${escapeHtml(v.bio)}</p>
-        <button class="btn btn--ghost btn--sm mt" data-go="chats">💬 Chat Vendor</button>
+        <button class="btn btn--ghost btn--sm mt" data-go="chats">Chat Vendor</button>
       </div>
 
       <div class="section--tight">
@@ -394,13 +393,13 @@ Routes["profile"] = () => ({
       </div>
     </div>
     <div class="stack mt">
-      ${menuRow("🧾","Riwayat Pesanan","orders")}
-      ${menuRow("💜","Favorit Saya", null, State.favorites.size + " item")}
-      ${menuRow("💬","Pesan","chats")}
-      ${menuRow("📍","Alamat Tersimpan")}
-      ${menuRow("💳","Metode Pembayaran")}
-      ${menuRow("🏪","Beralih ke Mode Vendor","v-home")}
-      ${menuRow("❓","Bantuan & FAQ")}
+      ${menuRow("Riwayat Pesanan","orders")}
+      ${menuRow("Favorit Saya", null, State.favorites.size + " item")}
+      ${menuRow("Pesan","chats")}
+      ${menuRow("Alamat Tersimpan")}
+      ${menuRow("Metode Pembayaran")}
+      ${menuRow("Beralih ke Mode Vendor","v-home")}
+      ${menuRow("Bantuan & FAQ")}
     </div>
     <div class="mt">
       <button class="btn btn--ghost btn--block" data-go="splash">Keluar</button>
@@ -411,9 +410,8 @@ Routes["profile"] = () => ({
   `,
 });
 
-function menuRow(ic, label, route, right = "") {
-  return `<div class="lrow" ${route ? `data-go="${route}"` : ""}>
-    <div class="lrow__ic">${ic}</div>
+function menuRow(label, route, right = "") {
+  return `<div class="lrow lrow--menu" ${route ? `data-go="${route}"` : ""}>
     <div class="lrow__main"><b>${label}</b></div>
     <div class="lrow__right">${right ? `<small class="muted">${right}</small>` : ""} <span style="color:var(--ink-soft)">›</span></div>
   </div>`;

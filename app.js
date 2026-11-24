@@ -179,7 +179,7 @@ function bindDelegates() {
 
 function toggleFav(id) {
   if (State.favorites.has(id)) { State.favorites.delete(id); toast("Dihapus dari favorit"); }
-  else { State.favorites.add(id); toast("Ditambahkan ke favorit 💜"); }
+  else { State.favorites.add(id); toast("Ditambahkan ke favorit"); }
   render();
 }
 

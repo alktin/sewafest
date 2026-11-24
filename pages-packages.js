@@ -8,7 +8,7 @@ function packageCard(pkg) {
     <div class="pkg-card__img">
       ${imgTag(pkg.img, pkg.name, "pkg-card__photo", "dekor", pkg.icon)}
       ${pkg.badge ? `<span class="pkg-card__badge">${pkg.badge}</span>` : ""}
-      <span class="pkg-card__eo">🎯 Diurus SewaFest</span>
+      <span class="pkg-card__eo">Diurus SewaFest</span>
     </div>
     <div class="pkg-card__body">
       <h3>${pkg.icon} ${escapeHtml(pkg.name)}</h3>
@@ -46,7 +46,7 @@ Routes["packages"] = () => ({
       <div class="eo-step"><div class="eo-step__n">1</div><b>Pilih paket / isi brief</b><small>Tentukan jenis acara, tanggal, jumlah tamu & budget.</small></div>
       <div class="eo-step"><div class="eo-step__n">2</div><b>SewaFest atur semua</b><small>Kami koordinasi vendor, katering, dekor, sound untukmu.</small></div>
       <div class="eo-step"><div class="eo-step__n">3</div><b>Setup oleh tim kami</b><small>Tim SewaFest datang, pasang, dan siapkan acara.</small></div>
-      <div class="eo-step"><div class="eo-step__n">4</div><b>Terima jadi 🎉</b><small>Kamu tinggal hadir & menikmati acaranya.</small></div>
+      <div class="eo-step"><div class="eo-step__n">4</div><b>Terima jadi</b><small>Kamu tinggal hadir & menikmati acaranya.</small></div>
     </div>
 
     <div class="section-head" style="margin-top:36px"><h2>Paket Acara Siap Pakai</h2><a data-go="eo-request">Butuh custom? Konsultasi →</a></div>
@@ -79,7 +79,7 @@ Routes["package"] = (id) => {
         <div class="detail__gallery">
           ${imgTag(pkg.img, pkg.name, "detail__main-img", "dekor", pkg.icon)}
           <div class="eo-badges mt">
-            <span class="tag tag--mint">🎯 Diselenggarakan SewaFest</span>
+            <span class="tag tag--mint">Diselenggarakan SewaFest</span>
             <span class="tag tag--plum">👥 ${pkg.guests}</span>
             <span class="tag tag--plum">⏱️ ${pkg.duration}</span>
           </div>
@@ -92,14 +92,14 @@ Routes["package"] = (id) => {
           <div class="price-big mt">${money(pkg.price)} <span>${pkg.priceNote}</span></div>
 
           <div class="card mt">
-            <b style="font-size:15px">✨ Sudah termasuk</b>
+            <b style="font-size:15px">Sudah termasuk</b>
             <div class="eo-incl mt-s">
               ${pkg.includes.map(([ic, t]) => `<div class="eo-incl__item"><span class="eo-incl__ic">${ic}</span><span>${escapeHtml(t)}</span></div>`).join("")}
             </div>
           </div>
 
           <div class="card">
-            <b style="font-size:15px">📋 Cara kerjanya</b>
+            <b style="font-size:15px">Cara kerjanya</b>
             <div class="stack mt-s" style="gap:0">
               ${pkg.timeline.map((step, i) => `
                 <div class="row" style="gap:12px;padding:9px 0">
@@ -109,11 +109,11 @@ Routes["package"] = (id) => {
             </div>
           </div>
 
-          <div class="note">💡 Harga final menyesuaikan jumlah tamu, lokasi, dan permintaan khusus. Konsultasi & RAB <b>gratis</b> sebelum kamu membayar.</div>
+          <div class="note">Harga final menyesuaikan jumlah tamu, lokasi, dan permintaan khusus. Konsultasi & RAB <b>gratis</b> sebelum kamu membayar.</div>
 
           <div class="row mt" style="gap:12px">
             <button class="btn btn--primary btn--lg" style="flex:1" data-go="eo-request/${pkg.id}">Pesan Paket Ini</button>
-            <button class="btn btn--ghost btn--lg" data-go="chats">💬 Tanya Dulu</button>
+            <button class="btn btn--ghost btn--lg" data-go="chats">Tanya Dulu</button>
           </div>
         </div>
       </div>
@@ -164,7 +164,7 @@ Routes["eo-request"] = (preselect) => {
           <textarea id="eoNotes" placeholder="mis. tema warna pastel, ada menu vegetarian, butuh MC, dll."></textarea></div>
       </div>
 
-      <div class="note mt">🛡️ <b>Aman:</b> Konsultasi & penyusunan rencana gratis. Kamu baru membayar setelah menyetujui proposal & RAB dari SewaFest.</div>
+      <div class="note mt"><b>Aman:</b> Konsultasi & penyusunan rencana gratis. Kamu baru membayar setelah menyetujui proposal & RAB dari SewaFest.</div>
 
       <div class="mt">
         <button class="btn btn--primary btn--block btn--lg" id="eoSubmit">Kirim & Minta Dihubungi</button>
@@ -174,7 +174,7 @@ Routes["eo-request"] = (preselect) => {
     `,
     after: () => {
       document.getElementById("eoSubmit").onclick = () => {
-        toast("Terkirim! Tim EO SewaFest akan menghubungimu < 1×24 jam 🎉");
+        toast("Terkirim! Tim EO SewaFest akan menghubungimu < 1×24 jam");
         setTimeout(() => go("packages"), 900);
       };
     },
